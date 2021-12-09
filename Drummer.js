@@ -21,16 +21,20 @@ window.addEventListener("deviceorientation", function(event) {
     if (event.beta > 70) {
         loaded = true;
     }
-    if (loaded) {
-        loaded = false;
-        if(event.beta < 30) {
-            if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
-                audioT[currSound].play();
+    if (event.beta < 30) {
+        if (loaded) {
+            loaded = false;
+            if(event.beta < 30) {
+                if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
+                    audioT[currSound].play();
+                }
+                currSound = (currSound + 1) % audioT.length;
+            
             }
-            currSound = (currSound + 1) % audioT.length;
-        
         }
+
     }
+   
 }, true);
 
 window.ondevicemotion = function(event) { 
