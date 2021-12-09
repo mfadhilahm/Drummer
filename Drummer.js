@@ -25,7 +25,7 @@ window.addEventListener("deviceorientation", function(event) {
     if (event.beta > 70) {
         loaded = true;
     }
-    if (0 < event.beta < 30) {
+    if (event.beta < 30) {
         if (loaded) {
             loaded = false;
             if(event.beta < 30) {
