@@ -1,5 +1,5 @@
-var triggered = true;
-var loaded = true;
+var triggered = false;
+var loaded = false;
 var audio = new Audio('Drums/Hi-hat (open).mp3');
 var audioT = [new Audio('Drums/Hi-hat (open).mp3'),
 new Audio('Drums/Hi-hat (open).mp3'),
@@ -8,15 +8,28 @@ new Audio('Drums/Hi-hat (open).mp3'),
 new Audio('Drums/Hi-hat (open).mp3')
 ];
 var currSound = 0;
-
+/*30 - 70*/
 window.addEventListener("deviceorientation", function(event) {
 	document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
-    if(event.beta < 0) {
+    /*if(event.beta < 0) {
         if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
             audioT[currSound].play();
         }
         currSound = (currSound + 1) % audioT.length;
     
+    }*/
+    if (event.beta > 70) {
+        loaded = true;
+    }
+    if (loaded) {
+        loaded = false;
+        if(event.beta < 30) {
+            if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
+                audioT[currSound].play();
+            }
+            currSound = (currSound + 1) % audioT.length;
+        
+        }
     }
 }, true);
 
