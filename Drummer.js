@@ -45,16 +45,12 @@ window.addEventListener("deviceorientation", function(event) {
 }, true);
 
 window.ondevicemotion = function(event) { 
-	var ax = event.acceleration.x
-	var ay = event.acceleration.y
-	var az = event.acceleration.z
+	var ax = event.accelerationIncludingGravity.x
+	var ay = event.accelerationIncludingGravity.y
+	var az = event.accelerationIncludingGravity.z
 
-    var t = event.interval / 1000;
-    var d = 0.5 * ax * t * t;
-    x_coord = x_coord + d;
+	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";
 
-	document.querySelector("#acc").innerHTML =  t + "x_coord = " + d + "a" + x_coord;
-    /*"X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" +*/
 }
 
 function playSound() {
