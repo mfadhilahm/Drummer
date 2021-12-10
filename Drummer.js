@@ -55,7 +55,7 @@ window.addEventListener("deviceorientation", function(event) {
         }
     }*/
     
-    /*document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;*/
+    document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
 
 }, true);
 
