@@ -40,10 +40,10 @@ window.addEventListener("deviceorientation", function(event) {
     }*/
     var ax = event.accelerationIncludingGravity.x;
 
-    if (ax < 1) {
+    if (ax < 1 && ax > -1) {
         loaded = true;
     }
-    if (ax > 7.5) {
+    if (ax > 7.5 || ax < -7.5) {
         if (loaded) {
             loaded = false;
                 if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
