@@ -40,7 +40,7 @@ window.addEventListener("deviceorientation", function(event) {
     }
 
     
-    document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
+    /*document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;*/
 
 }, true);
 
@@ -53,8 +53,8 @@ window.ondevicemotion = function(event) {
     var d = 0.5 * ax * t * t;
     x_coord = x_coord + d;
 
-	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" + t + "x_coord = " + d + "a" + x_coord;
-
+	document.querySelector("#acc").innerHTML =  t + "x_coord = " + d + "a" + x_coord;
+    /*"X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" +*/
 }
 
 function playSound() {
