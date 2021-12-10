@@ -38,19 +38,6 @@ window.addEventListener("deviceorientation", function(event) {
         }
 
     }*/
-
-    
-    /*document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;*/
-
-}, true);
-
-window.ondevicemotion = function(event) { 
-	var ax = event.accelerationIncludingGravity.x
-	var ay = event.accelerationIncludingGravity.y
-	var az = event.accelerationIncludingGravity.z
-
-	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";
-
     if (ax < 1) {
         loaded = true;
     }
@@ -64,6 +51,32 @@ window.ondevicemotion = function(event) {
             
             
         }
+    }
+    
+    /*document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;*/
+
+}, true);
+
+window.ondevicemotion = function(event) { 
+	var ax = event.accelerationIncludingGravity.x
+	var ay = event.accelerationIncludingGravity.y
+	var az = event.accelerationIncludingGravity.z
+
+	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";
+
+    /*if (ax < 1) {
+        loaded = true;
+    }
+    if (ax > 7.5) {
+        if (loaded) {
+            loaded = false;
+                if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
+                    audioT[currSound].play();
+                }
+                currSound = (currSound + 1) % audioT.length;
+            
+            
+        }*/
 
 }
 
