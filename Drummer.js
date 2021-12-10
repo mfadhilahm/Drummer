@@ -8,13 +8,13 @@ new Audio('Drums/Hi-hat (open).mp3'),
 new Audio('Drums/Hi-hat (open).mp3')
 ];
 var currSound = 0;
-var cx = 0;
+var x_coord = 0;
 var cy = 0;
 var dx = [0,0];
 var dy = [0,0];
 /*30 - 70*/
 window.addEventListener("deviceorientation", function(event) {
-	document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
+	
     /*if(event.beta < 0) {
         if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
             audioT[currSound].play();
@@ -38,7 +38,10 @@ window.addEventListener("deviceorientation", function(event) {
         }
 
     }
-   
+
+    
+    document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
+
 }, true);
 
 window.ondevicemotion = function(event) { 
@@ -46,7 +49,11 @@ window.ondevicemotion = function(event) {
 	var ay = event.acceleration.y
 	var az = event.acceleration.z
 
-	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az;
+    var t = event.interval * 1000;
+    var d = ax * t * t;
+    var x_coord = x_coord + d;
+
+	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" + "x_coord = " + x_coord;
 
 }
 
