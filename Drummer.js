@@ -54,7 +54,7 @@ window.ondevicemotion = function(event) {
     if (ax < 1) {
         loaded = true;
     }
-    if (event.beta < 30) {
+    if (ax > 7.5) {
         if (loaded) {
             loaded = false;
                 if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
