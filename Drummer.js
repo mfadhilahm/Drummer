@@ -53,7 +53,7 @@ window.ondevicemotion = function(event) {
     var d = ax * t * t;
     var x_coord = x_coord + d;
 
-	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" + "x_coord = " + x_coord;
+	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" + t + "x_coord = " + d;
 
 }
 
