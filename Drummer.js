@@ -38,7 +38,7 @@ window.addEventListener("deviceorientation", function(event) {
         }
 
     }*/
-    var ax = event.accelerationIncludingGravity.x;
+    /*var ax = event.accelerationIncludingGravity.x;
 
     if (ax < 1 && ax > -1) {
         loaded = true;
@@ -53,7 +53,7 @@ window.addEventListener("deviceorientation", function(event) {
             
             
         }
-    }
+    }*/
     
     /*document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;*/
 
@@ -66,7 +66,7 @@ window.ondevicemotion = function(event) {
 
 	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";
 
-    /*if (ax < 1) {
+    if (ax < 1) {
         loaded = true;
     }
     if (ax > 7.5) {
@@ -78,7 +78,8 @@ window.ondevicemotion = function(event) {
                 currSound = (currSound + 1) % audioT.length;
             
             
-        }*/
+        }
+    }
 
 }
 
