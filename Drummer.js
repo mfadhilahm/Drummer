@@ -38,6 +38,8 @@ window.addEventListener("deviceorientation", function(event) {
         }
 
     }*/
+    var ax = event.accelerationIncludingGravity.x;
+
     if (ax < 1) {
         loaded = true;
     }
