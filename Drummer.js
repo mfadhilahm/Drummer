@@ -51,6 +51,20 @@ window.ondevicemotion = function(event) {
 
 	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";
 
+    if (ax < 1) {
+        loaded = true;
+    }
+    if (event.beta < 30) {
+        if (loaded) {
+            loaded = false;
+                if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
+                    audioT[currSound].play();
+                }
+                currSound = (currSound + 1) % audioT.length;
+            
+            
+        }
+
 }
 
 function playSound() {
