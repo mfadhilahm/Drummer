@@ -22,7 +22,7 @@ window.addEventListener("deviceorientation", function(event) {
         currSound = (currSound + 1) % audioT.length;
     
     }*/
-    if (event.beta > 70) {
+    /*if (event.beta > 70) {
         loaded = true;
     }
     if (event.beta < 30) {
@@ -37,7 +37,7 @@ window.addEventListener("deviceorientation", function(event) {
             }
         }
 
-    }
+    }*/
 
     
     /*document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;*/
