@@ -49,11 +49,11 @@ window.ondevicemotion = function(event) {
 	var ay = event.acceleration.y
 	var az = event.acceleration.z
 
-    var t = event.interval * 1000;
-    var d = ax * t * t;
-    var x_coord = x_coord + d;
+    var t = event.interval / 1000;
+    var d = 0.5 * ax * t * t;
+    x_coord = x_coord + d;
 
-	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" + t + "x_coord = " + d;
+	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>" + t + "x_coord = " + d + "a" + x_coord;
 
 }
 
