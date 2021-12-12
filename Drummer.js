@@ -60,7 +60,7 @@ window.ondevicemotion = function(event) {
                     audioT[currSound].play();
                 }
                 currSound = (currSound + 1) % audioT.length;*/
-            playSound(0);
+            playSound();
             
             
         }
@@ -68,16 +68,16 @@ window.ondevicemotion = function(event) {
 
 }
 
-function playSound(number) {
-    if (number == 0) {
-        audio = new Audio(soundPath[path]);
-    } else {
-        path = number - 1;
-        audio = new Audio(soundPath[path]);
-    }
+function playSound() {
+    audio = new Audio(soundPath[path]);
     audio.play();
+}
 
-
+function buttonClick(number) {
+    path = number;
+    if (buttonMuted == false) {
+        playSound();
+    }
 }
 
 /*function playSound() {
