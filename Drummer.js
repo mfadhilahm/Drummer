@@ -21,17 +21,22 @@ var audioPath = ["Drums/Hi-hat (Closed).mp3",
 
 var loaded = false; /* device needs to be loaded before firing a sound with motion*/
 
+var d;
+
 /*  motion detection */
 window.ondevicemotion = function(event) { 
 	var ax = event.accelerationIncludingGravity.x
 	var ay = event.accelerationIncludingGravity.y
 	var az = event.accelerationIncludingGravity.z
 
-	document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";
+	/*document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";*/
 
     if (stickMode == true) {
         if (ax < 1) {   /* raising phone high enough will load the device */
             loaded = true;
+            if (!loaded) {
+                d = ax;
+            }
         }
         if (ax > 7.5) {
             if (loaded) {
@@ -40,7 +45,8 @@ window.ondevicemotion = function(event) {
                         audioT[currSound].play();
                     }
                     currSound = (currSound + 1) % audioT.length;*/
-                playSound();     
+                playSound();
+                document.querySelector("#acc").innerHTML = "load = " + d + "<br>" + "trigger = " + ax;
             }
         }
     }
