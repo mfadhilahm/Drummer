@@ -35,8 +35,9 @@ window.ondevicemotion = function(event) {
         if (ax < 1 && ax > -1) {   /* raising phone high enough will load the device */
             if (!loaded) {
                 d = ax;
+                loaded = true;
             }
-            loaded = true;
+            
         }
         if (ax > 7.5 || ax < -7.5) {
             if (loaded) {
