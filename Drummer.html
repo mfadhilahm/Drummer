@@ -12,8 +12,7 @@
     </head>
     <body>
         <h1 id="Mode"> DRUMS </h1>
-        <div class="button-div">
-            <button id="calibrate" onclick="playSound()">Calibrate</button>
+        <div class="drumButton">
             <button id="btn_1" onclick="buttonClick(0)">Hi-hat (Closed)</button>
             <button id="btn_2" onclick="buttonClick(1)">Hi-hat (Open)</button>
             <button id="btn_3" onclick="buttonClick(2)">Crash Symbal</button>
@@ -25,7 +24,11 @@
             <button id="btn_9" onclick="buttonClick(8)">Snare Drum (Cross Stick)</button>
             <button id="btn_10" onclick="buttonClick(9)">Hi-hat (Foot)</button>
             <button id="btn_11" onclick="buttonClick(10)">Bass Drum</button>
-            <button id="btn_11" onclick="changeButtonBehavior()">Mute/ Unmute</button>
+        </div>
+        <div class="optionButton">
+            <button id="stickButton" onclick="stickModeToggle(9)">Stick Mode</button>
+            <button id="footButton" onclick="footModeToggle(10)">Foot Mode</button>
+            <button id="muteButton" onclick="muteToggle()">Mute/ Unmute</button>
         </div>
         <h2>How to use:</h2>
         <p>
