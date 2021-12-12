@@ -8,8 +8,9 @@ new Audio('Drums/Hi-hat (Open).mp3'),
 new Audio('Drums/Hi-hat (Open).mp3')
 ];
 var currSound = 0;
+var path = "Drums/Hi-hat (Open).mp3";
 
-var sound_path = ["Drums/Hi-hat (Closed).mp3",
+var soundPath = ["Drums/Hi-hat (Closed).mp3",
     "Drums/Hi-hat (Open).mp3",
     "Drums/Crash Symbal.mp3",
     "Drums/Ride Symbal.mp3",
@@ -42,7 +43,7 @@ window.addEventListener("deviceorientation", function(event) {
 
     }*/
     
-    document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
+    document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma + path;
 
 }, true);
 
@@ -79,10 +80,12 @@ function playSound() {
 
 function soundChange(number) {
 
-    audioT = [new Audio(sound_path(number)),
-        new Audio(sound_path(number)),
-        new Audio(sound_path(number)),
-        new Audio(sound_path(number)),
-        new Audio(sound_path(number))
+    audioT = [new Audio(soundPath[number]),
+        new Audio(soundPath[number]),
+        new Audio(soundPath[number]),
+        new Audio(soundPath[number]),
+        new Audio(soundPath[number])
     ];
+    audioT.load();
+    path = soundPath[number];
 }
