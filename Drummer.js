@@ -96,19 +96,22 @@ function muteToggle() {
 }
 
 function stickModeToggle(hand) {
+    var sign = hand;
     stickMode = true;
     footMode = false;
-    document.querySelector("#acc").innerHTML = hand;
-    if(hand == "RIGHT") {
+    document.querySelector("#acc").innerHTML = sign;
+    if(hand == "R") {
         rightHand = true;
         leftHand = false;
         loadBoundary = rightStickLoadBoundary;
         triggerBoundary = rightStickTriggerBoundary;
-    } else if (hand == "LEFT") {
+        document.querySelector("#acc").innerHTML = "Test1";
+    } else if (hand == "L") {
         rightHand = false;
         leftHand = true;
         loadBoundary = leftStickLoadBoundary;
         triggerBoundary = leftStickTriggerBoundary;
+        document.querySelector("#acc").innerHTML = "Test2";
     }
 }
 
