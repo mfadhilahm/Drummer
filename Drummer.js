@@ -78,6 +78,7 @@ function buttonClick(number) {
     if (buttonMuted == false) {
         playSound();
     }
+    document.querySelector("#acc").innerHTML = path;
 }
 
 /*function playSound() {
