@@ -39,8 +39,6 @@ var d;
 /*  motion detection */
 window.ondevicemotion = function(event) { 
 	var ax = event.accelerationIncludingGravity.x
-	var ay = event.accelerationIncludingGravity.y
-	var az = event.accelerationIncludingGravity.z
 
 	/*document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";*/
 
@@ -101,12 +99,12 @@ function stickModeToggle(hand) {
     stickMode = true;
     footMode = false;
     document.querySelector("#acc").innerHTML = hand;
-    if(hand == "Right") {
+    if(hand == "RIGHT") {
         rightHand = true;
         leftHand = false;
         loadBoundary = rightStickLoadBoundary;
         triggerBoundary = rightStickTriggerBoundary;
-    } else if (hand == "Left") {
+    } else if (hand == "LEFT") {
         rightHand = false;
         leftHand = true;
         loadBoundary = leftStickLoadBoundary;
