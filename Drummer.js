@@ -1,19 +1,15 @@
 var triggered = false;
 var loaded = false;
-var audio = new Audio('Drums/Hi-hat (Open).mp3');
-var audioT = [new Audio('Drums/Hi-hat (Open).mp3'),
-new Audio('Drums/Hi-hat (Open).mp3'),
-new Audio('Drums/Hi-hat (Open).mp3'),
-new Audio('Drums/Hi-hat (Open).mp3'),
-new Audio('Drums/Hi-hat (Open).mp3')
-];
+var audio;
+var audioT;
 var currSound = 0;
-var path = "Drums/Hi-hat (Open).mp3";
+var path = 0;
+var buttonMuted = true;
 
 var soundPath = ["Drums/Hi-hat (Closed).mp3",
     "Drums/Hi-hat (Open).mp3",
-    "Drums/Crash Symbal.mp3",
-    "Drums/Ride Symbal.mp3",
+    "Drums/Crash Cymbal.mp3",
+    "Drums/Ride Cymbal.mp3",
     "Drums/Snare Drum.mp3",
     "Drums/High Tom-tom.mp3",
     "Drums/Low Tom-tom.mp3",
@@ -60,10 +56,11 @@ window.ondevicemotion = function(event) {
     if (ax > 7.5) {
         if (loaded) {
             loaded = false;
-                if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
+                /*if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
                     audioT[currSound].play();
                 }
-                currSound = (currSound + 1) % audioT.length;
+                currSound = (currSound + 1) % audioT.length;*/
+            playSound(0);
             
             
         }
@@ -71,7 +68,19 @@ window.ondevicemotion = function(event) {
 
 }
 
-function playSound() {
+function playSound(number) {
+    if (number == 0) {
+        audio = new Audio(soundPath[path]);
+    } else {
+        path = number - 1;
+        audio = new Audio(soundPath[path]);
+    }
+    audio.play();
+
+
+}
+
+/*function playSound() {
     if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
         audioT[currSound].play();
     }
@@ -86,6 +95,17 @@ function soundChange(number) {
         new Audio(soundPath[number]),
         new Audio(soundPath[number])
     ];
-    audioT.load();
     path = soundPath[number];
+
+    if (buttonMuted == false) {
+        playSound();
+    }
+}*/
+
+function changeButtonBehavior() {
+    if (buttonMuted == false) {
+        buttonMuted = true;
+    } else {
+        buttonMuted = false;
+    }
 }
