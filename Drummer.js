@@ -1,27 +1,30 @@
 var triggered = false;
 var loaded = false;
-var audio = new Audio('Drums/Hi-hat (open).mp3');
-var audioT = [new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3')
+var audio = new Audio('Drums/Hi-hat (Open).mp3');
+var audioT = [new Audio('Drums/Hi-hat (Open).mp3'),
+new Audio('Drums/Hi-hat (Open).mp3'),
+new Audio('Drums/Hi-hat (Open).mp3'),
+new Audio('Drums/Hi-hat (Open).mp3'),
+new Audio('Drums/Hi-hat (Open).mp3')
 ];
 var currSound = 0;
-var x_coord = 0;
-var cy = 0;
-var dx = [0,0];
-var dy = [0,0];
-/*30 - 70*/
+
+var sound_path = ["Drums/Hi-hat (Closed).mp3",
+    "Drums/Hi-hat (Open).mp3",
+    "Drums/Crash Symbal.mp3",
+    "Drums/Ride Symbal.mp3",
+    "Drums/Snare Drum.mp3",
+    "Drums/High Tom-tom.mp3",
+    "Drums/Low Tom-tom.mp3",
+    "Drums/Floor Tom.mp3",
+    "Drums/Snare Drum (Cross Stick).mp3",
+    "Drums/Hi-hat (Foot).mp3",
+    "Drums/Bass Drum.mp3"
+];
+
 window.addEventListener("deviceorientation", function(event) {
 	
-    /*if(event.beta < 0) {
-        if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
-            audioT[currSound].play();
-        }
-        currSound = (currSound + 1) % audioT.length;
     
-    }*/
     /*if (event.beta > 70) {
         loaded = true;
     }
@@ -37,22 +40,6 @@ window.addEventListener("deviceorientation", function(event) {
             }
         }
 
-    }*/
-    /*var ax = event.accelerationIncludingGravity.x;
-
-    if (ax < 1 && ax > -1) {
-        loaded = true;
-    }
-    if (ax > 7.5 || ax < -7.5) {
-        if (loaded) {
-            loaded = false;
-                if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
-                    audioT[currSound].play();
-                }
-                currSound = (currSound + 1) % audioT.length;
-            
-            
-        }
     }*/
     
     document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma;
@@ -88,16 +75,14 @@ function playSound() {
         audioT[currSound].play();
     }
     currSound = (currSound + 1) % audioT.length;
-
 }
 
-/*function load() {
-    
+function soundChange(number) {
 
-    audioT = [new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3'),
-new Audio('Drums/Hi-hat (open).mp3')
-];
-}*/
+    audioT = [new Audio(sound_path(number)),
+        new Audio(sound_path(number)),
+        new Audio(sound_path(number)),
+        new Audio(sound_path(number)),
+        new Audio(sound_path(number))
+    ];
+}
