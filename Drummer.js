@@ -32,13 +32,13 @@ window.ondevicemotion = function(event) {
 	/*document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";*/
 
     if (stickMode == true) {
-        if (ax < 1) {   /* raising phone high enough will load the device */
-            loaded = true;
+        if (ax < 1 && ax > -1) {   /* raising phone high enough will load the device */
             if (!loaded) {
                 d = ax;
             }
+            loaded = true;
         }
-        if (ax > 7.5) {
+        if (ax > 7.5 || ax < -7.5) {
             if (loaded) {
                 loaded = false;
                     /*if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
