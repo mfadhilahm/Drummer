@@ -100,6 +100,7 @@ function muteToggle() {
 function stickModeToggle(hand) {
     stickMode = true;
     footMode = false;
+    document.querySelector("#acc").innerHTML = hand;
     if(hand == "Right") {
         rightHand = true;
         leftHand = false;
