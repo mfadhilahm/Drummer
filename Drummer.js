@@ -1,7 +1,10 @@
 /* determine mode */
-var buttonMuted = true;
+
 var stickMode = true;
+var rightHand = true;
+var leftHand = false;
 var footMode = false;
+var buttonMuted = true;
 
 /* audio stuff */
 var audio;
@@ -19,7 +22,17 @@ var audioPath = ["Drums/Hi-hat (Closed).mp3",
     "Drums/Bass Drum.mp3"
 ];  /* paths to audio files */
 
-var loaded = false; /* device needs to be loaded before firing a sound with motion*/
+/* device needs to be loaded before firing a sound with motion*/
+var loaded = false;
+var loadBoundary = 1;
+var triggerBoundary = 7.5;
+
+const rightStickLoadBoundary = 1;
+const rightStickTriggerBoundary = 7.5;
+const leftStickLoadBoundary = -1;
+const leftStickTriggerBoundary = -7.5;
+const footLoadBoundary = 1;
+const footTriggerBoundary = -1;
 
 var d;
 
@@ -31,16 +44,14 @@ window.ondevicemotion = function(event) {
 
 	/*document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";*/
 
-    if (stickMode == true) {
-        if (ax < 1 && ax > -1) {   /* raising phone high enough will load the device */
-            if (!loaded) {
+    if (stickMode && rightHand) {
+        if (ax < loadBoundary && !loaded) {   /* raising phone high enough will load the device */
+            
                 d = ax;
                 loaded = true;
-            }
             
         }
-        if (ax > 7.5 || ax < -7.5) {
-            if (loaded) {
+        if (ax > triggerBoundary && loaded) {
                 loaded = false;
                     /*if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
                         audioT[currSound].play();
@@ -48,15 +59,15 @@ window.ondevicemotion = function(event) {
                     currSound = (currSound + 1) % audioT.length;*/
                 playSound();
                 document.querySelector("#acc").innerHTML = "load = " + d + "<br>" + "trigger = " + ax;
-            }
+            
         }
     }
 
-    if (footMode == true) {
-        if (ax > 1) {
+    if (footMode || ( stickMode && leftHand )) {
+        if (ax > loadBoundary) {
             loaded = true;
         }
-        if (ax < -1) {
+        if (ax < triggerBoundary) {
             if (loaded) {
                 loaded = false;
                 playSound();           
@@ -86,14 +97,27 @@ function muteToggle() {
     }
 }
 
-function stickModeToggle() {
+function stickModeToggle(hand) {
     stickMode = true;
     footMode = false;
+    if(hand == "Right") {
+        rightHand = true;
+        leftHand = false;
+        loadBoundary = rightStickLoadBoundary;
+        triggerBoundary = rightStickTriggerBoundary;
+    } else if (hand == "Left") {
+        rightHand = false;
+        leftHand = true;
+        loadBoundary = leftStickLoadBoundary;
+        triggerBoundary = leftStickTriggerBoundary;
+    }
 }
 
 function footModeToggle() {
     stickMode = false;
     footMode = true;
+    loadBoundary = footLoadBoundary;
+    triggerBoundary = footLoadBoundary;
 }
 
 /*var audioT;
