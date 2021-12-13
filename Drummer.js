@@ -31,7 +31,7 @@ const rightStickLoadBoundary = 1;
 const rightStickTriggerBoundary = 7.5;
 const leftStickLoadBoundary = -1;
 const leftStickTriggerBoundary = -7.5;
-const footLoadBoundary = 3;
+const footLoadBoundary = 2;
 const footTriggerBoundary = -1;
 
 var d;
@@ -119,7 +119,7 @@ function footModeToggle() {
     stickMode = false;
     footMode = true;
     loadBoundary = footLoadBoundary;
-    triggerBoundary = footLoadBoundary;
+    triggerBoundary = footTriggerBoundary;
 }
 
 /*var audioT;
