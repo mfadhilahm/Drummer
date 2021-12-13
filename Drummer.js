@@ -32,7 +32,7 @@ const rightStickTriggerBoundary = 7.5;
 const leftStickLoadBoundary = -1;
 const leftStickTriggerBoundary = -7.5;
 const footLoadBoundary = 2;
-const footTriggerBoundary = -1;
+const footTriggerBoundary = -2;
 
 var d;
 
