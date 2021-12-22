@@ -2,6 +2,46 @@
 
 }
 
+body {
+    background-color: black;
+    color: white;
+}
+
 h1 {
     font-size: 5rem;
+    text-align: center;
+}
+
+#drumButtonContainer {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-bottom: 5rem;
+}
+
+button {
+	border-color: white;
+    background-color: black;
+    color: white;
+    
+}
+
+.drumButton {
+    aspect-ratio: 1;
+}
+
+#btn_11 {
+    grid-row: 3;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    aspect-ratio: 2;
+}
+
+#optionButtonContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.optionButton {
+    aspect-ratio: 1;
+
 }
