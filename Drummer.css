@@ -14,7 +14,7 @@ h1 {
 
 #drumButtonContainer {
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     padding-bottom: 5rem;
 }
 
@@ -30,15 +30,15 @@ button {
 }
 
 #btn_11 {
-    grid-row: 3;
-    grid-column-start: 3;
-    grid-column-end: 5;
+    grid-row: 4;
+    grid-column-start: 2;
+    grid-column-end: 4;
     aspect-ratio: 2;
 }
 
 #optionButtonContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .optionButton {
