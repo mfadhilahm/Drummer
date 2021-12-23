@@ -53,3 +53,16 @@ button {
     background-color: green;
     color: black;
 }
+
+@media (min-width: 777px) {
+    #drumButtonContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    #btn_11 {
+        grid-row: 3;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        aspect-ratio: 5;
+    }
+}

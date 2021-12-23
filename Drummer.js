@@ -1,5 +1,4 @@
 // determine mode
-
 var motionSupport = false;
 var stickMode = true;
 var rightHand = true;
@@ -59,7 +58,7 @@ var optionButton = ["stickButtonL",
 window.ondevicemotion = function(event) {
     var ax = event.accelerationIncludingGravity.x
     
-    if (ax != null) {
+    if (ax != null) {   // device has motion sensor
         if (!motionSupport) {
             motionSupport = true;
             turnOnButton(optionButton[1]);
@@ -70,29 +69,20 @@ window.ondevicemotion = function(event) {
     }
 
     if (stickMode && rightHand) {
-        if (ax < loadBoundary && !loaded) {   /* raising phone high enough will load the device */
-            
-                d = ax;
+        if (ax < loadBoundary && !loaded) {   // raising phone high enough will load the device
                 loaded = true;
-            
         }
-        if (ax > triggerBoundary && loaded) {
+        if (ax > triggerBoundary && loaded) {   // lower the phone to trigger the sound when device is loaded
                 loaded = false;
-                    /*if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
-                        audioT[currSound].play();
-                    }
-                    currSound = (currSound + 1) % audioT.length;*/
-                playSound();
-                document.querySelector("#acc").innerHTML = "load = " + d + "<br>" + "trigger = " + ax;
-            
+                playSound();            
         }
     }
 
     if (footMode || ( stickMode && leftHand )) {
-        if (ax > loadBoundary) {
+        if (ax > loadBoundary) {    // raising phone high enough will load the device
             loaded = true;
         }
-        if (ax < triggerBoundary) {
+        if (ax < triggerBoundary) { // lower the phone to trigger the sound when device is load
             if (loaded) {
                 loaded = false;
                 playSound();           
@@ -101,22 +91,25 @@ window.ondevicemotion = function(event) {
     }
 }
 
+// play sound
 function playSound() {
     audio = new Audio(audioPath[path]);
     audio.play();
 }
 
-function buttonClick(number) {
+// active the sound set when pressing a drum button
+function drumButtonClick(number) {
     if (path != null) {
         turnOffButton(drumButton[path]);
     }
     turnOnButton(drumButton[number]);
     path = number;
-    if (buttonMuted == false) {
+    if (buttonMuted == false) { // play a sound if button is not muted
         playSound();
     }
 }
 
+// toggle mute behavior for the buttons
 function muteToggle() {
     if (buttonMuted == false) {
         buttonMuted = true;
@@ -127,10 +120,22 @@ function muteToggle() {
     }
 }
 
+// toggle stick mode
 function stickModeToggle(hand) {
-    stickMode = true;
-    footMode = false;
-    if(hand == "R") {
+    if (!motionSupport) {   // no motion sensor
+        return
+    }
+    
+    if(hand == "R") {   // right stick
+        if (rightHand) {    // turning off
+            stickMode = false;
+            rightHand = false;
+            turnOffButton(optionButton[1]);
+            return
+        }
+
+        stickMode = true;
+        footMode = false;
         rightHand = true;
         leftHand = false;
         loadBoundary = rightStickLoadBoundary;
@@ -138,7 +143,16 @@ function stickModeToggle(hand) {
         turnOnButton(optionButton[1]);
         turnOffButton(optionButton[0]);
         turnOffButton(optionButton[2]);
-    } else if (hand == "L") {
+    } else if (hand == "L") {   // left stick
+        if (leftHand) { // turning off
+            stickMode = false;
+            leftHand = false;
+            turnOffButton(optionButton[1]);
+            return
+        }
+
+        stickMode = true;
+        footMode = false;
         rightHand = false;
         leftHand = true;
         loadBoundary = leftStickLoadBoundary;
@@ -149,7 +163,16 @@ function stickModeToggle(hand) {
     }
 }
 
+// toggle foot mode
 function footModeToggle() {
+    if (!motionSupport) {   // no motion sensor
+        return
+    } else if (footMode) {  // turning off
+        footMode = false;
+        turnOffButton(optionButton[2]);
+        return
+    }
+
     stickMode = false;
     footMode = true;
     loadBoundary = footLoadBoundary;
@@ -159,63 +182,16 @@ function footModeToggle() {
     turnOffButton(optionButton[1]);
 }
 
+// button turn off animation
 function turnOffButton(id) {
     btn = document.querySelector("#" + id);
     btn.style.backgroundColor = "black";
     btn.style.color = "white"
 }
 
+// button turn on animation
 function turnOnButton(id) {
     btn = document.querySelector("#" + id);
     btn.style.backgroundColor = "green";
     btn.style.color = "black"
 }
-
-/*var audioT;
-var currSound = 0;*/
-
-/*function playSound() {
-    if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
-        audioT[currSound].play();
-    }
-    currSound = (currSound + 1) % audioT.length;
-}
-
-function soundChange(number) {
-
-    audioT = [new Audio(soundPath[number]),
-        new Audio(soundPath[number]),
-        new Audio(soundPath[number]),
-        new Audio(soundPath[number]),
-        new Audio(soundPath[number])
-    ];
-    path = soundPath[number];
-
-    if (buttonMuted == false) {
-        playSound();
-    }
-}*/
-
-/*window.addEventListener("deviceorientation", function(event) {
-	
-    
-    if (event.beta > 70) {
-        loaded = true;
-    }
-    if (event.beta < 30) {
-        if (loaded) {
-            loaded = false;
-            if(event.beta < 30) {
-                if(audioT[currSound].currentTime == 0 || audioT[currSound].ended) {
-                    audioT[currSound].play();
-                }
-                currSound = (currSound + 1) % audioT.length;
-            
-            }
-        }
-
-    }
-    
-    document.querySelector("#mag").innerHTML = "alpha = " + event.alpha + "<br>" + "beta = " + event.beta + "<br>" + "gamma = " + event.gamma + path;
-
-}, true);*/
