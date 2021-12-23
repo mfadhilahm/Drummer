@@ -147,7 +147,7 @@ function stickModeToggle(hand) {
         if (leftHand) { // turning off
             stickMode = false;
             leftHand = false;
-            turnOffButton(optionButton[1]);
+            turnOffButton(optionButton[0]);
             return
         }
 

@@ -51,7 +51,7 @@ button {
     color: black;
 }
 
-@media (min-width: 777px) {
+@media (min-width: 60rem) {
     #drumButtonContainer {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
@@ -67,9 +67,7 @@ button {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-}
 
-@media (min-width: 888px) {
     .optionButton {
         aspect-ratio: 2;
     }
