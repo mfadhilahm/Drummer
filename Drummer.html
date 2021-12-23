@@ -11,19 +11,19 @@
 
     </head>
     <body>
-        <h1 id="Mode"> DRUMS </h1>
+        <h1 id="Mode"> DRUMMER </h1>
         <div id="drumButtonContainer">
-            <button id="btn_1" class="drumButton" onclick="buttonClick(0)">Hi-hat (Closed)</button>
-            <button id="btn_2" class="drumButton" onclick="buttonClick(1)">Hi-hat (Open)</button>
-            <button id="btn_3" class="drumButton" onclick="buttonClick(2)">Crash Symbal</button>
-            <button id="btn_4" class="drumButton" onclick="buttonClick(3)">Ride Symbal</button>
-            <button id="btn_5" class="drumButton" onclick="buttonClick(4)">Snare Drum</button>
-            <button id="btn_6" class="drumButton" onclick="buttonClick(5)">High Tom-tom</button>
-            <button id="btn_7" class="drumButton" onclick="buttonClick(6)">Low Tom-tom</button>
-            <button id="btn_8" class="drumButton" onclick="buttonClick(7)">Floor Tom</button>
-            <button id="btn_9" class="drumButton" onclick="buttonClick(8)">Snare Drum (Cross Stick)</button>
-            <button id="btn_10" class="drumButton" onclick="buttonClick(9)">Hi-hat (Foot)</button>
-            <button id="btn_11" class="drumButton" onclick="buttonClick(10)">Bass Drum</button>
+            <button id="btn_1" class="drumButton" onclick="drumButtonClick(0)">Hi-hat (Closed)</button>
+            <button id="btn_2" class="drumButton" onclick="drumButtonClick(1)">Hi-hat (Open)</button>
+            <button id="btn_3" class="drumButton" onclick="drumButtonClick(2)">Crash Symbal</button>
+            <button id="btn_4" class="drumButton" onclick="drumButtonClick(3)">Ride Symbal</button>
+            <button id="btn_5" class="drumButton" onclick="drumButtonClick(4)">Snare Drum</button>
+            <button id="btn_6" class="drumButton" onclick="drumButtonClick(5)">High Tom-tom</button>
+            <button id="btn_7" class="drumButton" onclick="drumButtonClick(6)">Low Tom-tom</button>
+            <button id="btn_8" class="drumButton" onclick="drumButtonClick(7)">Floor Tom</button>
+            <button id="btn_9" class="drumButton" onclick="drumButtonClick(8)">Snare Drum (Cross Stick)</button>
+            <button id="btn_10" class="drumButton" onclick="drumButtonClick(9)">Hi-hat (Foot)</button>
+            <button id="btn_11" class="drumButton" onclick="drumButtonClick(10)">Bass Drum</button>
         </div>
         <div id="optionButtonContainer">
             <button id="stickButtonL" class="optionButton" onclick="stickModeToggle('L')">Stick Mode L</button>
@@ -31,15 +31,19 @@
             <button id="footButton" class="optionButton" onclick="footModeToggle()">Foot Mode</button>
             <button id="muteButton" class="optionButton" onclick="muteToggle()">Mute/ Unmute Buttons</button>
         </div>
-        <h2>How to use:</h2>
-        <p>
-            <span>1. Calibrate your phone</span>
-            <span>initial zone:</span>
-            <ul>
-                <li>Right Stick - Zone 7</li>
-                <li>Left Stick - Zone 6</li>
-                <li>L/R Foot - Zone 9</li>
-            </ul>
-        </p>
+        <h2>How to use with motion sensor:</h2>
+        <ol>
+            <li>Choose the mode you want</li>
+            <li>For stick mode: hold your phone in the choosen hand with the screen inwards and move the phone like a drum stick
+                <br>
+                For foot mode: from standard portrait orientation, rotate your phone 90° counterclockwise, put the phone on 
+                your foot and move your foot up and down
+            </li>
+        </ol>
+        <h2>How to use otherwise:</h2>
+        <ol>
+            <li>Make sure buttons are unmuted</li>
+            <li>Use touchscreen or mouse to click on the buttons</li>
+        </ol>
     </body>
 </html>

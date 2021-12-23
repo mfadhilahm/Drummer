@@ -1,10 +1,7 @@
-* {
-    
-}
-
 body {
     background-color: black;
     color: white;
+    font-size: 30px;
 }
 
 h1 {
@@ -64,5 +61,16 @@ button {
         grid-column-start: 1;
         grid-column-end: 6;
         aspect-ratio: 5;
+    }
+
+    #optionButtonContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 888px) {
+    .optionButton {
+        aspect-ratio: 2;
     }
 }

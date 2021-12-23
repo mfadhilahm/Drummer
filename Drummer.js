@@ -1,7 +1,7 @@
 // determine mode
 var motionSupport = false;
-var stickMode = true;
-var rightHand = true;
+var stickMode = false;
+var rightHand = false;
 var leftHand = false;
 var footMode = false;
 var buttonMuted = false;
@@ -61,9 +61,7 @@ window.ondevicemotion = function(event) {
     if (ax != null) {   // device has motion sensor
         if (!motionSupport) {
             motionSupport = true;
-            turnOnButton(optionButton[1]);
-            turnOffButton(optionButton[0]);
-            turnOffButton(optionButton[2]);
+            stickModeToggle("R");
             muteToggle();
         }
     }
@@ -102,8 +100,10 @@ function drumButtonClick(number) {
     if (path != null) {
         turnOffButton(drumButton[path]);
     }
+
     turnOnButton(drumButton[number]);
     path = number;
+
     if (buttonMuted == false) { // play a sound if button is not muted
         playSound();
     }
