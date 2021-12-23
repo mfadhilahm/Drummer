@@ -1,5 +1,5 @@
 * {
-
+    
 }
 
 body {
@@ -22,7 +22,7 @@ button {
 	border-color: white;
     background-color: black;
     color: white;
-    
+    font-size: 30px;
 }
 
 .drumButton {
@@ -43,5 +43,13 @@ button {
 
 .optionButton {
     aspect-ratio: 1;
+}
 
+#stickButtonL, #stickButtonR, #footButton {
+    background-color: darkgray;
+}
+
+#muteButton {
+    background-color: green;
+    color: black;
 }

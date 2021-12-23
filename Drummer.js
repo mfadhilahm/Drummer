@@ -1,14 +1,15 @@
-/* determine mode */
+// determine mode
 
+var motionSupport = false;
 var stickMode = true;
 var rightHand = true;
 var leftHand = false;
 var footMode = false;
-var buttonMuted = true;
+var buttonMuted = false;
 
-/* audio stuff */
+// audio stuff
 var audio;
-var path;   /* which audio path is currently chosen */
+var path;   // which audio path is currently chosen
 var audioPath = ["Drums/Hi-hat (Closed).mp3",
     "Drums/Hi-hat (Open).mp3",
     "Drums/Crash Cymbal.mp3",
@@ -20,9 +21,9 @@ var audioPath = ["Drums/Hi-hat (Closed).mp3",
     "Drums/Snare Drum (Cross Stick).mp3",
     "Drums/Hi-hat (Foot).mp3",
     "Drums/Bass Drum.mp3"
-];  /* paths to audio files */
+];  // paths to audio files
 
-/* device needs to be loaded before firing a sound with motion*/
+// device needs to be loaded before firing a sound with motion
 var loaded = false;
 var loadBoundary = 1;
 var triggerBoundary = 7.5;
@@ -34,13 +35,39 @@ const leftStickTriggerBoundary = -7.5;
 const footLoadBoundary = 2;
 const footTriggerBoundary = -2;
 
-var d;
+//buttons
+var drumButton = ["btn_1",
+    "btn_2",
+    "btn_3",
+    "btn_4",
+    "btn_5",
+    "btn_6",
+    "btn_7",
+    "btn_8",
+    "btn_9",
+    "btn_10",
+    "btn_11"
+]
 
-/*  motion detection */
-window.ondevicemotion = function(event) { 
-	var ax = event.accelerationIncludingGravity.x
+var optionButton = ["stickButtonL",
+    "stickButtonR",
+    "footButton",
+    "muteButton"
+]
 
-	/*document.querySelector("#acc").innerHTML = "X = " + ax + "<br>" + "Y = " + ay + "<br>" + "Z = " + az + "<br>";*/
+//  motion detection
+window.ondevicemotion = function(event) {
+    var ax = event.accelerationIncludingGravity.x
+    
+    if (ax != null) {
+        if (!motionSupport) {
+            motionSupport = true;
+            turnOnButton(optionButton[1]);
+            turnOffButton(optionButton[0]);
+            turnOffButton(optionButton[2]);
+            muteToggle();
+        }
+    }
 
     if (stickMode && rightHand) {
         if (ax < loadBoundary && !loaded) {   /* raising phone high enough will load the device */
@@ -80,6 +107,10 @@ function playSound() {
 }
 
 function buttonClick(number) {
+    if (path != null) {
+        turnOffButton(drumButton[path]);
+    }
+    turnOnButton(drumButton[number]);
     path = number;
     if (buttonMuted == false) {
         playSound();
@@ -89,28 +120,32 @@ function buttonClick(number) {
 function muteToggle() {
     if (buttonMuted == false) {
         buttonMuted = true;
+        turnOffButton(optionButton[3]);
     } else {
         buttonMuted = false;
+        turnOnButton(optionButton[3]);
     }
 }
 
 function stickModeToggle(hand) {
-    var sign = hand;
     stickMode = true;
     footMode = false;
-    document.querySelector("#acc").innerHTML = sign;
     if(hand == "R") {
         rightHand = true;
         leftHand = false;
         loadBoundary = rightStickLoadBoundary;
         triggerBoundary = rightStickTriggerBoundary;
-        document.querySelector("#acc").innerHTML = "Test1";
+        turnOnButton(optionButton[1]);
+        turnOffButton(optionButton[0]);
+        turnOffButton(optionButton[2]);
     } else if (hand == "L") {
         rightHand = false;
         leftHand = true;
         loadBoundary = leftStickLoadBoundary;
         triggerBoundary = leftStickTriggerBoundary;
-        document.querySelector("#acc").innerHTML = "Test2";
+        turnOnButton(optionButton[0]);
+        turnOffButton(optionButton[1]);
+        turnOffButton(optionButton[2]);
     }
 }
 
@@ -119,6 +154,21 @@ function footModeToggle() {
     footMode = true;
     loadBoundary = footLoadBoundary;
     triggerBoundary = footTriggerBoundary;
+    turnOnButton(optionButton[2]);
+    turnOffButton(optionButton[0]);
+    turnOffButton(optionButton[1]);
+}
+
+function turnOffButton(id) {
+    btn = document.querySelector("#" + id);
+    btn.style.backgroundColor = "black";
+    btn.style.color = "white"
+}
+
+function turnOnButton(id) {
+    btn = document.querySelector("#" + id);
+    btn.style.backgroundColor = "green";
+    btn.style.color = "black"
 }
 
 /*var audioT;
