@@ -7,12 +7,14 @@ body {
 h1 {
     font-size: 5rem;
     text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
 }
 
 #drumButtonContainer {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding-bottom: 5rem;
+    padding-bottom: 7.5rem;
 }
 
 button {
@@ -36,6 +38,7 @@ button {
 #optionButtonContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-bottom: 5rem;
 }
 
 .optionButton {
