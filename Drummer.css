@@ -54,7 +54,7 @@ button {
     color: black;
 }
 
-@media (min-width: 800px) {
+@media only screen and (min-width: 800px) {
     #drumButtonContainer {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
